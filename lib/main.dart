@@ -30,6 +30,8 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           primarySwatch: Colors.indigo,
+          fontFamily: 'Raleway',
+          
         ),
         home: const ScreenHome());
   }

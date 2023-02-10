@@ -48,6 +48,7 @@ class _ScreenEditState extends State<ScreenAdd> {
       ),
       body: SingleChildScrollView(
         child: Container(
+          margin: EdgeInsets.all(20),
           padding: const EdgeInsets.all(10),
           child: SingleChildScrollView(
             child: Form(
@@ -75,16 +76,17 @@ class _ScreenEditState extends State<ScreenAdd> {
                       ElevatedButton.icon(
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.black,
-                          elevation: 10,
+                          elevation: 10,//shadow
                         ),
                         onPressed: () {
                           getPhoto();
                         },
                         icon: const Icon(
                           Icons.image_outlined,
+                          size: Checkbox.width,
                         ),
                         label: const Text(
-                          'Add An Image',
+                          'Add An Image',style: TextStyle(fontSize: 12),
                         ),
                       ),
                     ],
@@ -92,7 +94,7 @@ class _ScreenEditState extends State<ScreenAdd> {
                   TextFormField(
                     controller: _firstNameController,
                     decoration: const InputDecoration(
-                        border: OutlineInputBorder(), hintText: 'First Name',labelText: 'First Name'),
+                        border:OutlineInputBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(20),bottomRight: Radius.circular(20)),), hintText: 'First Name',labelText: 'First Name'),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'First Name is empty!';
@@ -107,7 +109,7 @@ class _ScreenEditState extends State<ScreenAdd> {
                   TextFormField(
                       controller: _lastNameController,
                       decoration: const InputDecoration(
-                          border: OutlineInputBorder(), hintText: 'Last Name',labelText: 'Last Name'),
+                          border: OutlineInputBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(20),bottomRight: Radius.circular(20))), hintText: 'Last Name',labelText: 'Last Name'),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Last Name is empty!';
@@ -125,7 +127,7 @@ class _ScreenEditState extends State<ScreenAdd> {
                       keyboardType: TextInputType.number,
                       maxLength: 2,
                       decoration: const InputDecoration(
-                          border: OutlineInputBorder(), hintText: 'Age',labelText: 'Age'),
+                          border: OutlineInputBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(20),bottomRight: Radius.circular(20))), hintText: 'Age',labelText: 'Age'),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Age is empty!';
@@ -141,7 +143,7 @@ class _ScreenEditState extends State<ScreenAdd> {
                   TextFormField(
                       controller: _majorController,
                       decoration: const InputDecoration(
-                          border: OutlineInputBorder(), hintText: 'Major',labelText: 'Age'),
+                          border: OutlineInputBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(20),bottomRight: Radius.circular(20))), hintText: 'Major',labelText: 'Major'),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Major is empty!';
@@ -152,28 +154,26 @@ class _ScreenEditState extends State<ScreenAdd> {
                   const SizedBox(
                     height: 10,
                   ),
-                  Align(
-                    alignment: Alignment.bottomRight,
-                    child: ElevatedButton(
-                        onPressed: () {
-                          
-                          if (_formKey.currentState!.validate() &&
-                              _photo != null) {
-                            addStudentToModel();
-                          } else if (_photo == null) {
-                            ScaffoldMessenger.of(context)
-                                .showSnackBar(const SnackBar(
-                                    content: Text(
-                              'Please add profile image!',
-                              style: TextStyle(color: Colors.white),
-                            )));
-                          } else {
-                            print('Empty field found');
-                            imageAlert = true;
-                          }
-                        },
-                        child: const Text('Add Student')),
-                  )
+                  ElevatedButton(
+                      
+                      onPressed: () {
+                        
+                        if (_formKey.currentState!.validate() &&
+                            _photo != null) {
+                          addStudentToModel();
+                        } else if (_photo == null) {
+                          ScaffoldMessenger.of(context)
+                              .showSnackBar(const SnackBar(
+                                  content: Text(
+                            'Please add profile image!',
+                            style: TextStyle(color: Colors.white),
+                          )));
+                        } else {
+                          print('Empty field found');
+                          imageAlert = true;
+                        }
+                      },
+                      child: const Text('Add Student'))
                 ],
               ),
             ),

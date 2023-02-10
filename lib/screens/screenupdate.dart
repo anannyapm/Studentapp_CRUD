@@ -97,7 +97,7 @@ class _ScreenUpdateState extends State<ScreenUpdate> {
                     TextFormField(
                       controller: _firstNameController,
                       decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
+                        border: OutlineInputBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(20),bottomRight: Radius.circular(20))),
                         hintText: '',
                         labelText: 'First Name',
                       ),
@@ -115,7 +115,7 @@ class _ScreenUpdateState extends State<ScreenUpdate> {
                     TextFormField(
                         controller: _lastNameController,
                         decoration: const InputDecoration(
-                            border: OutlineInputBorder(),
+                            border: OutlineInputBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(20),bottomRight: Radius.circular(20))),
                             hintText: '',
                             labelText: 'Last Name'),
                         validator: (value) {
@@ -135,7 +135,7 @@ class _ScreenUpdateState extends State<ScreenUpdate> {
                         keyboardType: TextInputType.number,
                         maxLength: 2,
                         decoration: const InputDecoration(
-                            border: OutlineInputBorder(),
+                            border: OutlineInputBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(20),bottomRight: Radius.circular(20))),
                             hintText: 'Age',
                             labelText: 'Age'),
                         validator: (value) {
@@ -153,7 +153,7 @@ class _ScreenUpdateState extends State<ScreenUpdate> {
                     TextFormField(
                         controller: _majorController,
                         decoration: const InputDecoration(
-                            border: OutlineInputBorder(),
+                            border: OutlineInputBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(20),bottomRight: Radius.circular(20))),
                             hintText: 'Major',
                             labelText: 'Major'),
                         validator: (value) {
