@@ -1,6 +1,9 @@
-# studentrepo_sqflite
+# studentrepository app CRUD operations
 
-A new Flutter project.
+Flutter project to learn CRUD operations using Hive as database.
+
+This app can take in student data, update profile including image, delete profile, search for a student data.
+
 
 ## Getting Started
 
