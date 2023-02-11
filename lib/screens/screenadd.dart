@@ -46,7 +46,7 @@ class _ScreenEditState extends State<ScreenAdd> {
           )
         ],
       ),
-      body: SingleChildScrollView(
+      body: SafeArea(
         child: Container(
           margin: EdgeInsets.all(20),
           padding: const EdgeInsets.all(10),
@@ -55,8 +55,58 @@ class _ScreenEditState extends State<ScreenAdd> {
               key: _formKey,
               child: Column(
                 children: [
-                  //check if photo null and assign photo to be shown accordingly
-                  _photo?.path == null
+                   //check if photo null and assign photo to be shown accordingly
+                  Stack(
+                      children: [
+                        _photo?.path == null
+                      ? const CircleAvatar(
+                          radius: 50,
+                        backgroundColor: Colors.blue,
+                        child: CircleAvatar(
+                          radius:48,
+                          backgroundImage: NetworkImage(
+                              'https://cdn-icons-png.flaticon.com/512/3237/3237472.png'),
+                        ),
+                          
+                        )
+                      : CircleAvatar(
+                          radius: 50,
+                        backgroundColor: Colors.blue,
+                        child: CircleAvatar(
+                          radius: 48,
+                          backgroundImage: FileImage(
+                            File(
+                              _photo!.path,
+                            ),
+                          ),
+                        ),
+                          
+                          
+                        ),
+                        Container(
+                          height: 40,
+                          width: 40,
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.blue,
+                          ),
+                          padding: EdgeInsets.all(4),
+                          child: Container(
+                            decoration: BoxDecoration(
+                                shape: BoxShape.circle, color: Colors.white),
+                            child: IconButton(
+                              icon: Icon(Icons.edit),
+                              padding: EdgeInsets.zero,
+                              onPressed: () {
+                                getPhoto();
+                              },
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                 
+                 /*  _photo?.path == null
                       ? const CircleAvatar(
                           radius: 40,
                           backgroundImage: NetworkImage(
@@ -69,28 +119,12 @@ class _ScreenEditState extends State<ScreenAdd> {
                             ),
                           ),
                           radius: 60,
-                        ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      ElevatedButton.icon(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.black,
-                          elevation: 10,//shadow
-                        ),
-                        onPressed: () {
-                          getPhoto();
-                        },
-                        icon: const Icon(
-                          Icons.image_outlined,
-                          size: Checkbox.width,
-                        ),
-                        label: const Text(
-                          'Add An Image',style: TextStyle(fontSize: 12),
-                        ),
-                      ),
-                    ],
+                        ), */
+                  
+                  const SizedBox(
+                    height: 15,
                   ),
+
                   TextFormField(
                     controller: _firstNameController,
                     decoration: const InputDecoration(
@@ -164,9 +198,10 @@ class _ScreenEditState extends State<ScreenAdd> {
                         } else if (_photo == null) {
                           ScaffoldMessenger.of(context)
                               .showSnackBar(const SnackBar(
+                                backgroundColor: Colors.red,
                                   content: Text(
                             'Please add profile image!',
-                            style: TextStyle(color: Colors.white),
+                            style: TextStyle(color: Colors.white, ),
                           )));
                         } else {
                           print('Empty field found');
