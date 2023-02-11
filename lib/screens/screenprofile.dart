@@ -171,7 +171,7 @@ class _ScreenProfileState extends State<ScreenProfile> {
                       onPressed: (() {
                         //setState(() {
                         Navigator.of(context)
-                            .push(MaterialPageRoute(builder: ((context) {
+                            .pushReplacement(MaterialPageRoute(builder: ((context) {
                           return ScreenUpdate(
                               firstname: widget.firstname,
                               lastname: widget.lastname,

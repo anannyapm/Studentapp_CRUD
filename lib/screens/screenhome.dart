@@ -20,10 +20,10 @@ class _ScreenHomeState extends State<ScreenHome> {
     getallstudents();
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Student Data List'),
+        title: const Text('Student Repository'),
         leading: GestureDetector(
           onTap: () {},
-          child: const Icon(Icons.home_filled),
+          child: const Icon(Icons.people_alt_rounded),
         ),
         actions: [
           Padding(
@@ -40,7 +40,7 @@ class _ScreenHomeState extends State<ScreenHome> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.of(context)
-              .push(MaterialPageRoute(builder: (ctx) => ScreenAdd()));
+              .pushReplacement(MaterialPageRoute(builder: (ctx) => ScreenAdd()));
         },
         child: const Icon(Icons.add),
         tooltip: 'Add Student',
