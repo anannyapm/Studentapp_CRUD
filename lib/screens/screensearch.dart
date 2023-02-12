@@ -7,6 +7,8 @@ import 'package:studentrepo_sqflite/screens/screenprofile.dart';
 import 'package:studentrepo_sqflite/screens/subscreens/listdata_widget.dart';
 
 class ScreenSearch extends SearchDelegate {
+
+    // first override to clear the search text
   @override
   List<Widget>? buildActions(BuildContext context) {
     // TODO: implement buildActions
@@ -20,6 +22,8 @@ class ScreenSearch extends SearchDelegate {
     ];
   }
 
+
+  //to pop out of the search menu
   @override
   Widget buildLeading(BuildContext context) {
     
@@ -36,7 +40,7 @@ class ScreenSearch extends SearchDelegate {
   @override
   Widget buildResults(BuildContext context) {
     // TODO: implement buildResults
-    bool output = true;
+    //bool output = true;
     return ValueListenableBuilder(
       valueListenable: studentListNotifier,
       builder: ((BuildContext context, List<StudentModel> studentList,
@@ -70,7 +74,7 @@ class ScreenSearch extends SearchDelegate {
               );
             } else {
               print('no result');
-              output = false;
+              //output = false;
             }
           },
           itemCount: studentList.length,
@@ -81,6 +85,8 @@ class ScreenSearch extends SearchDelegate {
     );
   }
 
+
+  //to show the querying process ie suggestions at the runtime 
   @override
   Widget buildSuggestions(BuildContext context) {
     return ValueListenableBuilder(
@@ -90,7 +96,8 @@ class ScreenSearch extends SearchDelegate {
         return ListView.builder(
           itemBuilder: (ctx, index) {
             final data = studentList[index];
-            if (data.firstname.contains(query)) {
+            String nameVal = data.firstname + data.lastname;
+            if (nameVal.contains(query)) {
               return Column(
                 children: [
                   ListTile(

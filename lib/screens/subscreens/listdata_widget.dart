@@ -49,7 +49,8 @@ class _ListDataWidgetState extends State<ListDataWidget> {
                 trailing: IconButton(
                   onPressed: () {
                     if (indexVal != null) {
-                      deleteStudent(indexVal);
+                      popDialogueBox(indexVal);
+                      //deleteStudent(indexVal);
                       print('Deleted value from $indexVal');
                     } else
                       print('ID passed is null');
@@ -68,5 +69,34 @@ class _ListDataWidgetState extends State<ListDataWidget> {
         );
       },
     );
+  }
+
+  popDialogueBox(int indexValue) {
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: const Text("Do you want to delete this entry?"),
+            titleTextStyle: const TextStyle(
+                fontWeight: FontWeight.bold, color: Colors.red, fontSize: 16),
+            actionsOverflowButtonSpacing: 20,
+            actions: [
+              ElevatedButton(
+                  onPressed: () {
+                    deleteStudent(indexValue);
+                    Navigator.of(context).pop();
+                  },
+                  child: const Text("YES")),
+              ElevatedButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: const Text(
+                    "NO",
+                  )),
+            ],
+            
+          );
+        });
   }
 }

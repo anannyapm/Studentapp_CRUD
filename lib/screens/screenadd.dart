@@ -22,7 +22,7 @@ class _ScreenEditState extends State<ScreenAdd> {
 
   final _majorController = TextEditingController();
 
-  bool imageAlert = false;
+
 
   final _formKey = GlobalKey<FormState>();
 
@@ -205,7 +205,7 @@ class _ScreenEditState extends State<ScreenAdd> {
                           )));
                         } else {
                           print('Empty field found');
-                          imageAlert = true;
+                          
                         }
                       },
                       child: const Text('Add Student'))

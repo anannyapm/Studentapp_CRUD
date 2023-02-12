@@ -5,7 +5,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:studentrepo_sqflite/functions/db_functions.dart';
 import 'package:studentrepo_sqflite/model/model.dart';
 import 'package:studentrepo_sqflite/screens/screenhome.dart';
-import 'package:studentrepo_sqflite/screens/screenprofile.dart';
+
 
 class ScreenUpdate extends StatefulWidget {
   final String firstname;
@@ -107,16 +107,16 @@ class _ScreenUpdateState extends State<ScreenUpdate> {
                         Container(
                           height: 40,
                           width: 40,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             shape: BoxShape.circle,
                             color: Colors.blue,
                           ),
-                          padding: EdgeInsets.all(4),
+                          padding: const EdgeInsets.all(4),
                           child: Container(
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                                 shape: BoxShape.circle, color: Colors.white),
                             child: IconButton(
-                              icon: Icon(Icons.edit),
+                              icon: const Icon(Icons.edit),
                               padding: EdgeInsets.zero,
                               onPressed: () {
                                 getPhoto();
