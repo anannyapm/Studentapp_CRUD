@@ -10,10 +10,11 @@ class ScreenAdd extends StatefulWidget {
   const ScreenAdd({super.key});
 
   @override
-  State<ScreenAdd> createState() => _ScreenEditState();
+  State<ScreenAdd> createState() => _ScreenAddState();
 }
 
-class _ScreenEditState extends State<ScreenAdd> {
+class _ScreenAddState extends State<ScreenAdd> {
+  //textediting controllers
   final _firstNameController = TextEditingController();
 
   final _lastNameController = TextEditingController();
@@ -22,13 +23,10 @@ class _ScreenEditState extends State<ScreenAdd> {
 
   final _majorController = TextEditingController();
 
-
-
   final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
@@ -48,65 +46,62 @@ class _ScreenEditState extends State<ScreenAdd> {
       ),
       body: SafeArea(
         child: Container(
-          margin: EdgeInsets.all(20),
+          margin: const EdgeInsets.all(20),
           padding: const EdgeInsets.all(10),
           child: SingleChildScrollView(
             child: Form(
               key: _formKey,
               child: Column(
                 children: [
-                   //check if photo null and assign photo to be shown accordingly
+                  //check if photo null and assign photo to be shown accordingly
                   Stack(
-                      children: [
-                        _photo?.path == null
-                      ? const CircleAvatar(
-                          radius: 50,
-                        backgroundColor: Colors.blue,
-                        child: CircleAvatar(
-                          radius:48,
-                          backgroundImage: NetworkImage(
-                              'https://cdn-icons-png.flaticon.com/512/3237/3237472.png'),
-                        ),
-                          
-                        )
-                      : CircleAvatar(
-                          radius: 50,
-                        backgroundColor: Colors.blue,
-                        child: CircleAvatar(
-                          radius: 48,
-                          backgroundImage: FileImage(
-                            File(
-                              _photo!.path,
+                    children: [
+                      _photo?.path == null
+                          ? const CircleAvatar(
+                              radius: 50,
+                              backgroundColor: Colors.blue,
+                              child: CircleAvatar(
+                                radius: 48,
+                                backgroundImage: NetworkImage(
+                                    'https://cdn-icons-png.flaticon.com/512/3237/3237472.png'),
+                              ),
+                            )
+                          : CircleAvatar(
+                              radius: 50,
+                              backgroundColor: Colors.blue,
+                              child: CircleAvatar(
+                                radius: 48,
+                                backgroundImage: FileImage(
+                                  File(
+                                    _photo!.path,
+                                  ),
+                                ),
+                              ),
                             ),
-                          ),
+                      Container(
+                        height: 40,
+                        width: 40,
+                        decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.blue,
                         ),
-                          
-                          
-                        ),
-                        Container(
-                          height: 40,
-                          width: 40,
+                        padding: const EdgeInsets.all(4),
+                        child: Container(
                           decoration: const BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Colors.blue,
-                          ),
-                          padding: EdgeInsets.all(4),
-                          child: Container(
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle, color: Colors.white),
-                            child: IconButton(
-                              icon: Icon(Icons.edit),
-                              padding: EdgeInsets.zero,
-                              onPressed: () {
-                                getPhoto();
-                              },
-                            ),
+                              shape: BoxShape.circle, color: Colors.white),
+                          child: IconButton(
+                            icon: const Icon(Icons.edit),
+                            padding: EdgeInsets.zero,
+                            onPressed: () {
+                              getPhoto();
+                            },
                           ),
                         ),
-                      ],
-                    ),
-                 
-                 /*  _photo?.path == null
+                      ),
+                    ],
+                  ),
+
+                  /*  _photo?.path == null
                       ? const CircleAvatar(
                           radius: 40,
                           backgroundImage: NetworkImage(
@@ -120,7 +115,7 @@ class _ScreenEditState extends State<ScreenAdd> {
                           ),
                           radius: 60,
                         ), */
-                  
+
                   const SizedBox(
                     height: 15,
                   ),
@@ -128,7 +123,13 @@ class _ScreenEditState extends State<ScreenAdd> {
                   TextFormField(
                     controller: _firstNameController,
                     decoration: const InputDecoration(
-                        border:OutlineInputBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(20),bottomRight: Radius.circular(20)),), hintText: 'First Name',labelText: 'First Name'),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(20),
+                              bottomRight: Radius.circular(20)),
+                        ),
+                        hintText: 'First Name',
+                        labelText: 'First Name'),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'First Name is empty!';
@@ -143,7 +144,12 @@ class _ScreenEditState extends State<ScreenAdd> {
                   TextFormField(
                       controller: _lastNameController,
                       decoration: const InputDecoration(
-                          border: OutlineInputBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(20),bottomRight: Radius.circular(20))), hintText: 'Last Name',labelText: 'Last Name'),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(20),
+                                  bottomRight: Radius.circular(20))),
+                          hintText: 'Last Name',
+                          labelText: 'Last Name'),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Last Name is empty!';
@@ -155,13 +161,18 @@ class _ScreenEditState extends State<ScreenAdd> {
                     height: 15,
                   ),
                   TextFormField(
-      
+
                       //we can use keyboard controller to take int val
                       controller: _ageController,
                       keyboardType: TextInputType.number,
                       maxLength: 2,
                       decoration: const InputDecoration(
-                          border: OutlineInputBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(20),bottomRight: Radius.circular(20))), hintText: 'Age',labelText: 'Age'),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(20),
+                                  bottomRight: Radius.circular(20))),
+                          hintText: 'Age',
+                          labelText: 'Age'),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Age is empty!';
@@ -177,7 +188,12 @@ class _ScreenEditState extends State<ScreenAdd> {
                   TextFormField(
                       controller: _majorController,
                       decoration: const InputDecoration(
-                          border: OutlineInputBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(20),bottomRight: Radius.circular(20))), hintText: 'Major',labelText: 'Major'),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(20),
+                                  bottomRight: Radius.circular(20))),
+                          hintText: 'Major',
+                          labelText: 'Major'),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Major is empty!';
@@ -189,23 +205,22 @@ class _ScreenEditState extends State<ScreenAdd> {
                     height: 10,
                   ),
                   ElevatedButton(
-                      
                       onPressed: () {
-                        
                         if (_formKey.currentState!.validate() &&
                             _photo != null) {
                           addStudentToModel();
                         } else if (_photo == null) {
                           ScaffoldMessenger.of(context)
                               .showSnackBar(const SnackBar(
-                                backgroundColor: Colors.red,
+                                  backgroundColor: Colors.red,
                                   content: Text(
-                            'Please add profile image!',
-                            style: TextStyle(color: Colors.white, ),
-                          )));
+                                    'Please add profile image!',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                    ),
+                                  )));
                         } else {
                           print('Empty field found');
-                          
                         }
                       },
                       child: const Text('Add Student'))

@@ -7,6 +7,10 @@ import 'package:studentrepo_sqflite/screens/screenhome.dart';
 
 
 void main() async {
+
+  //the WidgetFlutterBinding is used to interact with the Flutter engine.
+  //ensureInitialized() make sure that you have an instance of the WidgetsBinding so that the call to
+  // initialize plugin via engine happens asynchronously.
   WidgetsFlutterBinding.ensureInitialized();
 
   await Hive.initFlutter();

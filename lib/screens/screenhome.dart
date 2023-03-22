@@ -37,14 +37,16 @@ class _ScreenHomeState extends State<ScreenHome> {
           )
         ],
       ),
+      
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.of(context)
-              .pushReplacement(MaterialPageRoute(builder: (ctx) => ScreenAdd()));
+              .pushReplacement(MaterialPageRoute(builder: (ctx) => const ScreenAdd()));
         },
-        child: const Icon(Icons.add),
         tooltip: 'Add Student',
+        child: const Icon(Icons.add),
       ),
+
       body: const SafeArea(
           child: Padding(
         padding: EdgeInsets.all(10.0),

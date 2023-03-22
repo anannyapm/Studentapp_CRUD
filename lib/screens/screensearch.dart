@@ -49,7 +49,7 @@ class ScreenSearch extends SearchDelegate {
           itemBuilder: (ctx, index) {
             final data = studentList[index];
             String nameVal = data.firstname + data.lastname;
-            if (nameVal.toLowerCase().contains(query.toLowerCase())) {
+            if ((nameVal).contains((query.trim()))) {
               print('matched!!!!');
               return Column(
                 children: [
@@ -97,7 +97,7 @@ class ScreenSearch extends SearchDelegate {
           itemBuilder: (ctx, index) {
             final data = studentList[index];
             String nameVal = data.firstname + data.lastname;
-            if (nameVal.contains(query)) {
+            if ((nameVal).contains((query))) {
               return Column(
                 children: [
                   ListTile(

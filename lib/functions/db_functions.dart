@@ -32,6 +32,7 @@ Future<void> deleteStudent(int id) async {
   final studentDB = await Hive.openBox<StudentModel>('student_db');
 
   await studentDB.deleteAt(id);
+  
   getallstudents();
 }
 

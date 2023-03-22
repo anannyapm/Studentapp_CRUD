@@ -34,19 +34,6 @@ class ScreenProfile extends StatefulWidget {
 class _ScreenProfileState extends State<ScreenProfile> {
 
   @override
-/*   void initState() {
-    // TODO: implement initState
-    super.initState();
-    final String firstname;
-  final String lastname;
-  final String age;
-  final String major;
-  final String photo;
-  final int index;
-
-
-  } */
-  @override
   Widget build(BuildContext context) {
     getallstudents();
     return Scaffold(
@@ -74,8 +61,9 @@ class _ScreenProfileState extends State<ScreenProfile> {
               child: Column(
                 children: [
                   Text(
-                    'Student Profile - ${widget.firstname}',
-                    style: const TextStyle(fontSize: 20),
+                    'Details of ${widget.firstname} ${widget.lastname}',
+                    textAlign:TextAlign.center,
+                    style: const TextStyle(fontSize: 20,),
                   ),
                   const SizedBox(
                     height: 40,

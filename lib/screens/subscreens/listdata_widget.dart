@@ -17,6 +17,8 @@ class _ListDataWidgetState extends State<ListDataWidget> {
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
+
+      //here studentListNotifier is the valuenotifier object
       valueListenable: studentListNotifier,
       builder:
           (BuildContext ctx, List<StudentModel> studentList, Widget? child) {
@@ -46,13 +48,17 @@ class _ListDataWidgetState extends State<ListDataWidget> {
                 title: Text(
                   "${studentdata.firstname} ${studentdata.lastname}",
                 ),
+
+                //delete button   
                 trailing: IconButton(
                   onPressed: () {
                     if (indexVal != null) {
-                      popDialogueBox(indexVal);
+                      //to show confirmation popup for delete
+                      popupDialogueBox(indexVal);
                       //deleteStudent(indexVal);
                       print('Deleted value from $indexVal');
-                    } else
+                    } 
+                    else
                       print('ID passed is null');
                   },
                   icon: const Icon(Icons.delete),
@@ -71,7 +77,7 @@ class _ListDataWidgetState extends State<ListDataWidget> {
     );
   }
 
-  popDialogueBox(int indexValue) {
+  popupDialogueBox(int indexValue) {
     return showDialog(
         context: context,
         builder: (context) {
